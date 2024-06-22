@@ -40,6 +40,11 @@
 		options = [ "--cmd cd" ];
 	};
 
+	programs.fzf = {
+		enable = true;
+		enableZshIntegration = true;
+	};
+
   programs.starship.enable = true;
   programs.zsh = {
 		enable = true;
