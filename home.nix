@@ -21,8 +21,6 @@
 		userEmail = "louis.dutton@travelchapter.com";
 	};
 
-	programs.lazygit.enable = true;
-  programs.starship.enable = true;
 	programs.zoxide = {
 		enable = true;
 		enableZshIntegration = true;
@@ -31,7 +29,7 @@
 
   programs.zsh = {
 		enable = true;
-		# enableLsColors = true;
+		autocd = true;
 		enableCompletion = true;
 		shellAliases = {
 			rebuild = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nixos-rebuild switch";
@@ -41,4 +39,7 @@
 			g = "lazygit";
 		};
 	};
+
+	programs.lazygit.enable = true;
+  programs.starship.enable = true;
 }
