@@ -9,6 +9,12 @@
 		yarn
 	];
 
+	home.sessionVariables = {
+		MANPAGER = "nvim +Man!";
+		EDITOR = "nvim";
+		VISUAL = "nvim";
+	};
+
 	programs.git = {
 		enable = true;
 		userName = "Louis Dutton";
