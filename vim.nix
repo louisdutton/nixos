@@ -16,14 +16,51 @@ in
 			lualine.enable = true;
 			commentary.enable = true;
 			surround.enable = true;
-			indent-blankline.enable = true;
 			treesitter.enable = true;
 			treesitter-textobjects.enable = true;
+
+			indent-blankline = {
+				enable = true;
+				settings = {
+				 exclude = {
+					 buftypes = [
+						 "terminal"
+						 "quickfix"
+					 ];
+					 filetypes = [
+						 ""
+						 "checkhealth"
+						 "help"
+						 "lspinfo"
+						 "TelescopePrompt"
+						 "TelescopeResults"
+					 ];
+				 };
+				 indent = {
+					 char = "│";
+				 };
+				 scope = {
+					 show_end = false;
+					 show_exact_scope = true;
+					 show_start = false;
+				 };
+				};
+			};
 
 			telescope = {
 				enable = true;
 				keymaps = {
 					"<leader>ff" = "find_files";
+					"<leader>fc" = "commands";
+					"<leader>fs" = "symbols";
+					"<leader>fd" = "diagnostics";
+					"<leader>fg" = "live_grep";
+					"<leader>fq" = "quickfix";
+					"<leader>fo" = "oldfiles";
+					"<leader>fh" = "help_tags";
+					"<leader>fm" = "man_pages";
+					"<leader>ft" = "builtin";
+					"<leader>/" = "current_buffer_fuzzy_find";
 				};
 			};
 
@@ -36,7 +73,7 @@ in
 					{name = "buffer";}
 					{name = "luasnip";}
 				];
-			 	settings.formatting.fields = [ "kind" "abbr" "menu" ];
+				settings.formatting.fields = [ "kind" "abbr" "menu" ];
         settings.mapping = {
 				 "<C-Space>" = "cmp.mapping.complete()";
 				 "<C-d>" = "cmp.mapping.scroll_docs(-4)";
@@ -66,7 +103,12 @@ in
 
 					lspBuf = {
 						gd = "definition";
+						gr = "references";
+						gi = "implementation";
+						gt = "type_definition";
+						"<leader>a" = "code_action";
 						"<leader>k" = "hover";
+						"<leader>bf" = "format";
           };
 				};
 			};
