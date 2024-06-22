@@ -5,6 +5,8 @@
 	home.packages = with pkgs; [
 		gh
 		glab
+		nodejs
+		yarn
 	];
 
 	programs.git = {
