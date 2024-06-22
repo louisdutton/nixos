@@ -52,10 +52,12 @@
 			s = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nix-shell -p";
 			c = "clear";
 			e = "nvim";
+			se = "sudo nvim";
 			g = "lazygit";
+			sg = "sudo lazygit";
 			cat = "bat";
 		};
-
+		
 		initExtra = ''
 			# vi mode
 			bindkey -v
