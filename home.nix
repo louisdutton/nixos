@@ -23,6 +23,12 @@
 
 	programs.lazygit.enable = true;
   programs.starship.enable = true;
+	programs.zoxide = {
+		enable = true;
+		enableZshIntegration = true;
+		options = [ "--cmd cd" ];
+	};
+
   programs.zsh = {
 		enable = true;
 		# enableLsColors = true;
