@@ -24,7 +24,7 @@
 
   programs.java = {
     enable = true;
-    package = pkgs.openjdk8;
+    package = pkgs.openjdk17;
   };
 
   programs.lazygit = {
