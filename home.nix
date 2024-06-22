@@ -9,7 +9,6 @@
     ripgrep
     awscli2
     dotnet-sdk
-    openjdk8
     maven
   ];
 
@@ -20,6 +19,10 @@
     NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
   };
 
+  programs.java = {
+    enable = true;
+    package = pkgs.openjdk8;
+  };
 
   programs.lazygit = {
     enable = true;
