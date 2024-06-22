@@ -108,39 +108,47 @@
     };
 
     initExtra = ''
-      # vi mode
-      bindkey -v
-      export KEYTIMEOUT=1
+            # vi mode
+            bindkey -v
+            export KEYTIMEOUT=1
 
-      # viins
-      bindkey "^H" backward-delete-char
-      bindkey "^?" backward-delete-char
-      bindkey '^[^?' backward-kill-word
+            # viins
+            bindkey "^H" backward-delete-char
+            bindkey "^?" backward-delete-char
+            bindkey '^[^?' backward-kill-word
 
-      # vicmd
-      bindkey -M vicmd "H" vi-beginning-of-line
-      bindkey -M vicmd "L" vi-end-of-line
+            # vicmd
+            bindkey -M vicmd "H" vi-beginning-of-line
+            bindkey -M vicmd "L" vi-end-of-line
 
-      # Change cursor shape for different vi modes.
-      function zle-keymap-select {
-      	if [[ $KEYMAP == vicmd ]] ||
-      		 [[ $1 = "block" ]]; then
-      		echo -ne "\e[1 q"
-      	elif [[ $KEYMAP == main ]] ||
-      			 [[ KEYMAP == viins ]] ||
-      			 [[ KEYMAP = "" ]] ||
-      			 [[ $1 = "beam" ]]; then
-      		echo -ne "\e[5 q"
-      	fi
-      }
-      zle -N zle-keymap-select
-      zle-line-init() {
-      		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-      		echo -ne "\e[5 q"
-      }
-      zle -N zle-line-init
-      echo -ne "\e[5 q" # Use beam shape cursor on startup.
-      preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
+            # Change cursor shape for different vi modes.
+            function zle-keymap-select {
+            	if [[ $KEYMAP == vicmd ]] ||
+            		 [[ $1 = "block" ]]; then
+            		echo -ne "\e[1 q"
+            	elif [[ $KEYMAP == main ]] ||
+            			 [[ KEYMAP == viins ]] ||
+            			 [[ KEYMAP = "" ]] ||
+            			 [[ $1 = "beam" ]]; then
+            		echo -ne "\e[5 q"
+            	fi
+            }
+            zle -N zle-keymap-select
+            zle-line-init() {
+            		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+            		echo -ne "\e[5 q"
+            }
+            zle -N zle-line-init
+            echo -ne "\e[5 q" # Use beam shape cursor on startup.
+            preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
+
+      			# yank to the system clipboard
+      			function vi-yank-xclip {
+      					zle vi-yank
+      				 echo "$CUTBUFFER" | clip.exe
+      			}
+      			zle -N vi-yank-xclip
+      			bindkey -M vicmd 'y' vi-yank-xclip
     '';
 
     completionInit = ''
