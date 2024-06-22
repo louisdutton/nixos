@@ -24,6 +24,9 @@
 		userName = "Louis Dutton";
 		userEmail = "louis.dutton@travelchapter.com";
 		extraConfig = {
+			pull = {
+				rebase = false;
+			};
 			credential = {
 				"https://gitlab.com".helper = "!glab auth git-credential";
 			};
