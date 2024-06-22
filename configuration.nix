@@ -5,6 +5,10 @@
   networking.hostName = "PF3X11W5";
   programs.zsh.enable = true;
 
+	environment.systemPackages = [
+  	(pkgs.writeShellScriptBin "xdg-open" "exec -a $0 ${pkgs.wsl-open}/bin/wsl-open $@")
+	];
+
 	wsl = {
 		enable = true;
 		defaultUser = "louis";
