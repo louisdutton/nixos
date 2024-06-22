@@ -7,6 +7,7 @@
     glab
     nodejs
     ripgrep
+    sd
     awscli2
     dotnet-sdk
     maven
