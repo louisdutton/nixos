@@ -132,6 +132,8 @@ in
           nil_ls.enable = true;
           tsserver.enable = true;
           lemminx.enable = true;
+          java-language-server.enable = true;
+          jsonls.enable = true;
         };
 
         keymaps = {
