@@ -46,6 +46,7 @@
 			bindkey -v
 			bindkey "^H" backward-delete-char
 			bindkey "^?" backward-delete-char
+			bindkey '^[^?' backward-kill-word
 			export KEYTIMEOUT=1
 
 			# Change cursor shape for different vi modes.
