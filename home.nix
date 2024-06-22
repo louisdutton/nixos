@@ -70,6 +70,19 @@
 			echo -ne "\e[5 q" # Use beam shape cursor on startup.
 			preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 		'';
+
+		completionInit =  ''
+			autoload -Uz compinit                                   	# autoload completion
+			compinit                                                	# initialise completion
+			zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'     	# case-insensitive completion
+			zstyle ':completion:*' menu select                      	# menu selection
+			zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # list colors
+			bindkey '^[[Z' reverse-menu-complete                    	# shift-tab to navigate backwards
+			setopt COMPLETE_IN_WORD
+			setopt ALWAYS_TO_END
+			setopt MENU_COMPLETE
+			setopt COMPLETE_IN_WORD
+		'';
 	};
 
 	programs.lazygit.enable = true;
