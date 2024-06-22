@@ -71,17 +71,10 @@ in
       telescope = {
         enable = true;
         keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fc" = "commands";
-          "<leader>fs" = "symbols";
-          "<leader>fd" = "diagnostics";
-          "<leader>fg" = "live_grep";
-          "<leader>fq" = "quickfix";
-          "<leader>fo" = "oldfiles";
-          "<leader>fh" = "help_tags";
-          "<leader>fm" = "man_pages";
-          "<leader>ft" = "builtin";
-          "<leader>/" = "current_buffer_fuzzy_find";
+          "<leader>t" = "builtin";
+          "<leader>f" = "find_files";
+          "<leader>/" = "live_grep";
+          "?" = "current_buffer_fuzzy_find";
         };
       };
 
