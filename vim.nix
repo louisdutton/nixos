@@ -32,6 +32,8 @@ in
       commentary.enable = true;
       treesitter.enable = true;
       treesitter-textobjects.enable = true;
+      oil.enable = true;
+      noice.enable = true;
 
       gitsigns = {
         enable = true;
@@ -65,8 +67,6 @@ in
       surround = {
         enable = true;
       };
-
-      noice.enable = true;
 
       telescope = {
         enable = true;
