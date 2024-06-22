@@ -83,6 +83,14 @@ in
         };
       };
 
+      # snippets
+      friendly-snippets.enable = true;
+      luasnip = {
+        enable = true;
+        fromVscode = [ { } ];
+      };
+
+      # completion
       cmp = {
         enable = true;
         autoEnableSources = true;
@@ -98,19 +106,33 @@ in
           "menu"
         ];
         settings.mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
+          "<C-Space>" = "cmp.mapping.complete({ select = true })";
           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
           "<C-e>" = "cmp.mapping.close()";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<CR>" = "cmp.mapping.confirm({ select = true })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+          "<Tab>" = "
+
+						cmp.mapping(function(fallback)
+						  local luasnip = require('luasnip')
+							if cmp.visible() then
+								cmp.select_next_item()
+							elseif luasnip.expandable() then
+								luasnip.expand()
+							elseif luasnip.expand_or_jumpable() then
+								luasnip.expand_or_jump()
+							elseif check_backspace() then
+								fallback()
+							else
+								fallback()
+							end
+						end, {'i', 's'})";
         };
       };
 
       lsp = {
         enable = true;
-
         servers = {
           nil_ls.enable = true;
           tsserver.enable = true;
@@ -119,7 +141,6 @@ in
 
         keymaps = {
           silent = true;
-
           diagnostic = {
             "[d" = "goto_prev";
             "]d" = "goto_next";
