@@ -21,7 +21,6 @@
 		enable = true;
 		# enableLsColors = true;
 		enableCompletion = true;
-		syntaxHighlighting.enable = true;
 		shellAliases = {
 			rebuild = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nixos-rebuild switch";
 			config = "sudo nvim /etc/nixos/";
