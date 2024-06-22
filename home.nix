@@ -7,6 +7,7 @@
 		glab
 		nodejs
 		yarn
+		ripgrep
 	];
 
 	home.sessionVariables = {
