@@ -18,10 +18,17 @@
 		NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
 	};
 
+	programs.lazygit.enable = true;
 	programs.git = {
 		enable = true;
 		userName = "Louis Dutton";
 		userEmail = "louis.dutton@travelchapter.com";
+		extraConfig = {
+			credential = {
+				"https://gitlab.com".helper = "!glab auth git-credential";
+			};
+		};
+	};
 	};
 
 	programs.zoxide = {
@@ -90,6 +97,5 @@
 		'';
 	};
 
-	programs.lazygit.enable = true;
   programs.starship.enable = true;
 }
