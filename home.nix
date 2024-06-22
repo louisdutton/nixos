@@ -9,6 +9,8 @@
     ripgrep
     awscli2
     dotnet-sdk
+    openjdk8
+    maven
   ];
 
   home.sessionVariables = {
