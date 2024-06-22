@@ -127,7 +127,7 @@ in
       lsp = {
         enable = true;
         servers = {
-          nil_ls.enable = true;
+          nil-ls.enable = true;
           nixd.enable = true;
           tsserver.enable = true;
           html.enable = true;
