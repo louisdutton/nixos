@@ -6,6 +6,7 @@
     gh
     glab
     nodejs
+    bun
     ripgrep
     sd
     awscli2
