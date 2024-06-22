@@ -15,14 +15,14 @@
       modules = [
         { nix.registry.nixpkgs.flake = nixpkgs; }
         ./configuration.nix
-	./vim.nix
-        nixos-wsl.nixosModules.wsl
-	nixvim.nixosModules.nixvim
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager.useGlobalPkgs = true;
-	  home-manager.useUserPackages = true;
-	  home-manager.users.louis = import ./home.nix;
+				./vim.nix
+				nixos-wsl.nixosModules.wsl
+				nixvim.nixosModules.nixvim
+				home-manager.nixosModules.home-manager
+				{
+					home-manager.useGlobalPkgs = true;
+					home-manager.useUserPackages = true;
+					home-manager.users.louis = import ./home.nix;
         } 
       ];
     };
