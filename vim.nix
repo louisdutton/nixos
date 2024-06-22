@@ -5,6 +5,8 @@ in
 {
 	programs.nixvim = {
   	enable = true;
+		viAlias = true;
+		vimAlias = true;
 
 		colorschemes.base16 = {
 			enable = true;
