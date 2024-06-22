@@ -20,7 +20,21 @@
     NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
   };
 
-  programs.lazygit.enable = true;
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      keybindings = {
+        universal = {
+          nextTab = "l";
+          prevTab = "h";
+          "nextBlock-alt" = false;
+          "prevBlock-alt" = false;
+        };
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "Louis Dutton";
