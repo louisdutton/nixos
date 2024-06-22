@@ -66,6 +66,8 @@ in
         enable = true;
       };
 
+      noice.enable = true;
+
       telescope = {
         enable = true;
         keymaps = {
