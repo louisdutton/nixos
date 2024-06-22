@@ -6,14 +6,16 @@
 		gh
 		glab
 		nodejs
-		yarn
 		ripgrep
+		awscli2
+		dotnet-sdk
 	];
 
 	home.sessionVariables = {
 		MANPAGER = "nvim +Man!";
 		EDITOR = "nvim";
 		VISUAL = "nvim";
+		NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
 	};
 
 	programs.git = {
@@ -34,8 +36,9 @@
 		enableCompletion = true;
 
 		shellAliases = {
-			rebuild = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nixos-rebuild switch";
 			config = "sudo nvim /etc/nixos/";
+			rebuild = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nixos-rebuild switch";
+			s = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nix-shell -p";
 			c = "clear";
 			e = "nvim";
 			g = "lazygit";
@@ -47,6 +50,8 @@
 			bindkey "^H" backward-delete-char
 			bindkey "^?" backward-delete-char
 			bindkey '^[^?' backward-kill-word
+			bindkey "H" start-of-line
+			bindkey "L" end-of-line
 			export KEYTIMEOUT=1
 
 			# Change cursor shape for different vi modes.
