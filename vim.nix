@@ -33,36 +33,37 @@ in
       treesitter.enable = true;
       treesitter-textobjects.enable = true;
 
-      surround = {
-        enable = true;
-      };
-
-      indent-blankline = {
+      gitsigns = {
         enable = true;
         settings = {
-          exclude = {
-            buftypes = [
-              "terminal"
-              "quickfix"
-            ];
-            filetypes = [
-              ""
-              "checkhealth"
-              "help"
-              "lspinfo"
-              "TelescopePrompt"
-              "TelescopeResults"
-            ];
+          signcolumn = true;
+          numhl = true;
+          current_line_blame = false;
+          current_line_blame_opts = {
+            delay = 0;
+            virt_text = true;
+            virt_text_pos = "eol";
           };
-          indent = {
-            char = "│";
-          };
-          scope = {
-            show_end = false;
-            show_exact_scope = true;
-            show_start = false;
+          watch_gitdir.follow_files = true;
+          signs = {
+            add.text = "┃";
+            change.text = "┃";
+            changedelete.text = "~";
+            delete.text = "_";
+            topdelete.text = "‾";
+            untracked.text = "┆";
           };
         };
+      };
+
+      lazygit = {
+        enable = true;
+        gitPackage = null;
+        lazygitPackage = null;
+      };
+
+      surround = {
+        enable = true;
       };
 
       telescope = {
@@ -113,6 +114,7 @@ in
         servers = {
           nil_ls.enable = true;
           tsserver.enable = true;
+          lemminx.enable = true;
         };
 
         keymaps = {
@@ -130,7 +132,6 @@ in
             gt = "type_definition";
             "<leader>a" = "code_action";
             "<leader>k" = "hover";
-            "<leader>bf" = "format";
           };
         };
       };
@@ -139,7 +140,6 @@ in
         enable = true;
         notifyOnError = true;
         formattersByFt = {
-          lua = [ "stylua" ];
           javascript = [ "prettierd" ];
           typescript = [ "prettierd" ];
           json = [ "prettierd" ];
@@ -190,10 +190,16 @@ in
       (nmap "cL" "c$")
 
       # surround
-      (nmap "s" "ys")
+      (nmap "siw" "ysiw")
+      (nmap "saw" "ysaw")
 
       # redo
       (nmap "U" "<c-r>")
+
+      # git
+      (nmap "<leader>g" ":LazyGit<cr>")
+      (nmap "<leader>B" ":Gitsigns toggle_current_line_blame<cr>")
+      (nmap "<leader>h" ":Gitsigns preview_hunk<cr>")
     ];
 
     autoCmd = [
