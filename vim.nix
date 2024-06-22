@@ -128,10 +128,14 @@ in
         enable = true;
         servers = {
           nil_ls.enable = true;
+          nixd.enable = true;
           tsserver.enable = true;
+          html.enable = true;
           lemminx.enable = true;
           java-language-server.enable = true;
           jsonls.enable = true;
+          yamlls.enable = true;
+          gleam.enable = true;
         };
 
         keymaps = {
