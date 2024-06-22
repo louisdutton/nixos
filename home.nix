@@ -6,6 +6,7 @@
     gh
     glab
     nodejs
+    yarn
     bun
     ripgrep
     sd
