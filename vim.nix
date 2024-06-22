@@ -90,41 +90,38 @@ in
       cmp = {
         enable = true;
         autoEnableSources = true;
-        settings.sources = [
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "buffer"; }
-          { name = "luasnip"; }
-        ];
-        settings.formatting.fields = [
-          "kind"
-          "abbr"
-          "menu"
-        ];
-        settings.mapping = {
-          "<C-Space>" = "cmp.mapping.complete({ select = true })";
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-e>" = "cmp.mapping.close()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-          "<Tab>" = "
 
-						cmp.mapping(function(fallback)
-						  local luasnip = require('luasnip')
-							if cmp.visible() then
-								cmp.select_next_item()
-							elseif luasnip.expandable() then
-								luasnip.expand()
-							elseif luasnip.expand_or_jumpable() then
-								luasnip.expand_or_jump()
-							elseif check_backspace() then
-								fallback()
-							else
-								fallback()
-							end
-						end, {'i', 's'})";
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+            { name = "luasnip"; }
+          ];
+
+          formatting.fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
+
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-e>" = "cmp.mapping.close()";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+          };
         };
+      };
+
+      lsp-lines = {
+        enable = true;
+        currentLine = true;
       };
 
       lsp = {
@@ -151,6 +148,7 @@ in
             gt = "type_definition";
             "<leader>a" = "code_action";
             "<leader>k" = "hover";
+            "<leader>r" = "rename";
           };
         };
       };
