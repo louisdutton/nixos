@@ -97,8 +97,7 @@
 
     shellAliases = {
       config = "sudo nvim /etc/nixos/";
-      rebuild = "sudo nixos-rebuild switch";
-      s = "sudo NIX_SSL_CERT_FILE=/etc/ssl/certs/Cloudflare_CA.pem nix-shell -p";
+      rebuild = "nh os switch";
       c = "clear";
       e = "nvim";
       se = "sudo nvim";
