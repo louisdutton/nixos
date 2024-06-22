@@ -61,12 +61,16 @@
 		initExtra = ''
 			# vi mode
 			bindkey -v
+			export KEYTIMEOUT=1
+
+			# viins
 			bindkey "^H" backward-delete-char
 			bindkey "^?" backward-delete-char
 			bindkey '^[^?' backward-kill-word
-			bindkey "H" start-of-line
-			bindkey "L" end-of-line
-			export KEYTIMEOUT=1
+
+			# vicmd
+			bindkey -M vicmd "H" vi-beginning-of-line
+			bindkey -M vicmd "L" vi-end-of-line
 
 			# Change cursor shape for different vi modes.
 			function zle-keymap-select {
