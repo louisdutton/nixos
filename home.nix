@@ -29,6 +29,9 @@
 			};
 		};
 	};
+
+	programs.bat = {
+		enable = true;
 	};
 
 	programs.zoxide = {
@@ -37,6 +40,7 @@
 		options = [ "--cmd cd" ];
 	};
 
+  programs.starship.enable = true;
   programs.zsh = {
 		enable = true;
 		autocd = true;
@@ -49,6 +53,7 @@
 			c = "clear";
 			e = "nvim";
 			g = "lazygit";
+			cat = "bat";
 		};
 
 		initExtra = ''
@@ -96,6 +101,4 @@
 			setopt COMPLETE_IN_WORD
 		'';
 	};
-
-  programs.starship.enable = true;
 }
