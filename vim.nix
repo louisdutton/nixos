@@ -21,10 +21,11 @@ in
       prettierd
     ];
 
-    colorschemes.base16 = {
+    colorschemes.catppuccin = {
       enable = true;
-      colorscheme = "everforest";
-      setUpBar = true;
+      settings = {
+        transparent_background = true;
+      };
     };
 
     plugins = {
