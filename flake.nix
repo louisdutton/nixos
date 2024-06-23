@@ -42,7 +42,7 @@
           modules = [
             { nix.registry.nixpkgs.flake = nixpkgs; }
             ./configuration.nix
-            ./vim.nix
+            ./vim
             ./wsl.nix
             ./java.nix
             ./cloudflare.nix
