@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   home.stateVersion = "23.11";
-
   home.packages = with pkgs; [
     gh
     glab
@@ -41,10 +40,15 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
+  };
+
   programs.git = {
     enable = true;
-    userName = "Louis Dutton";
-    userEmail = "louis.dutton@travelchapter.com";
+    userName = user.displayName;
+    userEmail = user.email;
     extraConfig = {
       pull = {
         rebase = false;
@@ -96,7 +100,7 @@
     enableCompletion = true;
 
     shellAliases = {
-      config = "sudo nvim /etc/nixos/";
+      config = "e ${user.flake}";
       rebuild = "nh os switch";
       c = "clear";
       e = "nvim";

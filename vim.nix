@@ -127,15 +127,19 @@ in
       lsp = {
         enable = true;
         servers = {
-          nil-ls.enable = true;
-          nixd.enable = true;
           tsserver.enable = true;
           html.enable = true;
           lemminx.enable = true;
           java-language-server.enable = true;
           jsonls.enable = true;
           yamlls.enable = true;
-          gleam.enable = true;
+          nil-ls.enable = true;
+          nixd = {
+            enable = true;
+            # options = {
+            #   nixos.expr = (builtins.getFlake user.flake).nixosConfigurations.${user.hostName}.options;
+            # };
+          };
         };
 
         keymaps = {
