@@ -6,13 +6,15 @@
     "flakes"
   ];
   networking.hostName = user.hostName;
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.${user.name}.isNormalUser = true;
+  };
+
   programs.zsh.enable = true;
   programs.nh = {
     enable = true;
     flake = user.flake;
   };
-  users = {
-    defaultUserShell = pkgs.zsh;
-    users.${user.name}.isNormalUser = true;
-  };
+  environment.systemPackages = with pkgs; [ xclip ];
 }

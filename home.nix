@@ -110,6 +110,18 @@
       cat = "bat";
     };
 
+    plugins = [
+      {
+        name = "zsh-system-clipboard";
+        src = pkgs.fetchFromGitHub {
+          owner = "kutsan";
+          repo = "zsh-system-clipboard";
+          rev = "v0.8.0";
+          sha256 = "VWTEJGudlQlNwLOUfpo0fvh0MyA2DqV+aieNPx/WzSI=";
+        };
+      }
+    ];
+
     initExtra = ''
       # vi mode
       bindkey -v
@@ -145,15 +157,7 @@
       echo -ne "\e[5 q" # Use beam shape cursor on startup.
       preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 
-      # yank to the system clipboard
-      function vi-yank-xclip {
-      		zle vi-yank
-      	 echo "$CUTBUFFER" | clip.exe
-      }
-      zle -N vi-yank-xclip
-      bindkey -M vicmd 'y' vi-yank-xclip
-
-      # nix shell alias
+      # nix shell alias that maps arg -> nixpkgs#arg
       function s() {
       	args=("$@")
       	nix shell ''${args[@]/#/nixpkgs#}
