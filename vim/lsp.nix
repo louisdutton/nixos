@@ -1,4 +1,3 @@
-{ user, ... }:
 {
   programs.nixvim.plugins = {
     lsp-lines = {

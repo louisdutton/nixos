@@ -154,58 +154,60 @@
       }
     ];
 
-    initExtra = ''
-      # vi mode
-      bindkey -v
-      export KEYTIMEOUT=1
+    initExtra = # bash
+      ''
+        # vi mode
+        bindkey -v
+        export KEYTIMEOUT=1
 
-      # viins
-      bindkey "^H" backward-delete-char
-      bindkey "^?" backward-delete-char
-      bindkey '^[^?' backward-kill-word
+        # viins
+        bindkey "^H" backward-delete-char
+        bindkey "^?" backward-delete-char
+        bindkey '^[^?' backward-kill-word
 
-      # vicmd
-      bindkey -M vicmd "H" vi-beginning-of-line
-      bindkey -M vicmd "L" vi-end-of-line
+        # vicmd
+        bindkey -M vicmd "H" vi-beginning-of-line
+        bindkey -M vicmd "L" vi-end-of-line
 
-      # Change cursor shape for different vi modes.
-      function zle-keymap-select {
-      	if [[ $KEYMAP == vicmd ]] ||
-      		 [[ $1 = "block" ]]; then
-      		echo -ne "\e[1 q"
-      	elif [[ $KEYMAP == main ]] ||
-      			 [[ KEYMAP == viins ]] ||
-      			 [[ KEYMAP = "" ]] ||
-      			 [[ $1 = "beam" ]]; then
-      		echo -ne "\e[5 q"
-      	fi
-      }
-      zle -N zle-keymap-select
-      zle-line-init() {
-      		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-      		echo -ne "\e[5 q"
-      }
-      zle -N zle-line-init
-      echo -ne "\e[5 q" # Use beam shape cursor on startup.
-      preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
+        # Change cursor shape for different vi modes.
+        function zle-keymap-select {
+        	if [[ $KEYMAP == vicmd ]] ||
+        		 [[ $1 = "block" ]]; then
+        		echo -ne "\e[1 q"
+        	elif [[ $KEYMAP == main ]] ||
+        			 [[ KEYMAP == viins ]] ||
+        			 [[ KEYMAP = "" ]] ||
+        			 [[ $1 = "beam" ]]; then
+        		echo -ne "\e[5 q"
+        	fi
+        }
+        zle -N zle-keymap-select
+        zle-line-init() {
+        		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+        		echo -ne "\e[5 q"
+        }
+        zle -N zle-line-init
+        echo -ne "\e[5 q" # Use beam shape cursor on startup.
+        preexec() { echo -ne "\e[5 q" ;} # Use beam shape cursor for each new prompt.
 
-      # nix shell alias that maps arg -> nixpkgs#arg
-      function s() {
-      	args=("$@")
-      	nix shell ''${args[@]/#/nixpkgs#}
-      }
-    '';
-    completionInit = ''
-      autoload -Uz compinit                                   	# autoload completion
-      compinit                                                	# initialise completion
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'     	# case-insensitive completion
-      zstyle ':completion:*' menu select                      	# menu selection
-      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # list colors
-      bindkey '^[[Z' reverse-menu-complete                    	# shift-tab to navigate backwards
-      setopt COMPLETE_IN_WORD
-      setopt ALWAYS_TO_END
-      setopt MENU_COMPLETE
-      setopt COMPLETE_IN_WORD
-    '';
+        # nix shell alias that maps arg -> nixpkgs#arg
+        function s() {
+        	args=("$@")
+        	nix shell ''${args[@]/#/nixpkgs#}
+        }
+      '';
+    completionInit = # bash
+      ''
+        autoload -Uz compinit                                   	# autoload completion
+        compinit                                                	# initialise completion
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'     	# case-insensitive completion
+        zstyle ':completion:*' menu select                      	# menu selection
+        zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # list colors
+        bindkey '^[[Z' reverse-menu-complete                    	# shift-tab to navigate backwards
+        setopt COMPLETE_IN_WORD
+        setopt ALWAYS_TO_END
+        setopt MENU_COMPLETE
+        setopt COMPLETE_IN_WORD
+      '';
   };
 }
