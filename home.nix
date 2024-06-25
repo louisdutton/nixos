@@ -31,16 +31,16 @@
       in
       {
         "sso-session travelchapter" = {
-          sso_start_url = "https://travelchapter.awsapps.com/start/";
+          sso_start_url = "https://travelchapter.awsapps.com/start";
           sso_region = region;
-          sso_registration_scopes = "sso:account:acc";
+          sso_registration_scopes = "sso:account:access";
         };
         "profile data-dev" = profile "327913457104";
         "profile hub-dev" = profile "809561633273";
       };
   };
 
-  prograns.bun = {
+  programs.bun = {
     enable = true;
     settings = {
       telemetry = false;
@@ -139,6 +139,7 @@
       g = "lazygit";
       sg = "sudo lazygit";
       cat = "bat";
+      sso = "aws sso login --sso-session travelchapter";
     };
 
     plugins = [
