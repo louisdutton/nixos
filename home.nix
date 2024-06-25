@@ -2,15 +2,10 @@
 {
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
-    gh
     glab
     nodejs
     yarn
-    bun
-    ripgrep
     sd
-    awscli2
-    dotnet-sdk
     maven
   ];
 
@@ -21,9 +16,40 @@
     NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
   };
 
+  programs.awscli = {
+    enable = true;
+    settings =
+      let
+        region = "eu-west-1";
+        profile = id: {
+          sso_session = "travelchapter";
+          sso_account_id = id;
+          sso_role_name = "TC-Developer-Access-Dev";
+          region = region;
+          output = "json";
+        };
+      in
+      {
+        "sso-session travelchapter" = {
+          sso_start_url = "https://travelchapter.awsapps.com/start/";
+          sso_region = region;
+          sso_registration_scopes = "sso:account:acc";
+        };
+        "profile data-dev" = profile "327913457104";
+        "profile hub-dev" = profile "809561633273";
+      };
+  };
+
+  prograns.bun = {
+    enable = true;
+    settings = {
+      telemetry = false;
+    };
+  };
+
   programs.java = {
     enable = true;
-    package = pkgs.openjdk8;
+    package = pkgs.openjdk17;
   };
 
   programs.lazygit = {
@@ -77,6 +103,10 @@
     };
   };
 
+  programs.btop = {
+    enable = true;
+  };
+
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
@@ -88,6 +118,7 @@
     options = [ "--cmd cd" ];
   };
 
+  programs.ripgrep.enable = true;
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
