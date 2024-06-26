@@ -132,7 +132,6 @@
     enableCompletion = true;
 
     shellAliases = {
-      config = "e ${user.flake}";
       rebuild = "nh os switch";
       c = "clear";
       e = "nvim";
@@ -141,6 +140,8 @@
       sg = "sudo lazygit";
       cat = "bat";
       sso = "aws sso login --sso-session travelchapter";
+      tree = "ls --tree --git-ignore";
+      gl = "glab";
     };
 
     plugins = [
