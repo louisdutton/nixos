@@ -7,6 +7,7 @@
     yarn
     sd
     maven
+    xh
   ];
 
   home.sessionVariables = {
