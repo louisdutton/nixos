@@ -158,6 +158,13 @@
       sso = "aws sso login --sso-session travelchapter";
       tree = "ls --tree --git-ignore";
       gl = "glab";
+
+      # mulesoft
+      mule-redeploy =
+        let
+          job = "Deploy to develop";
+        in
+        "gl ci retry '${job}' && gl ci trace '${job}'";
     };
 
     plugins = [
