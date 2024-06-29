@@ -17,6 +17,8 @@
     NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/Cloudflare_CA.pem";
   };
 
+  programs.jq.enable = true;
+
   programs.awscli = {
     enable = true;
     settings =
