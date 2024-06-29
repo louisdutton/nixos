@@ -176,6 +176,7 @@
       sso = "aws sso login --sso-session travelchapter";
       tree = "ls --tree --git-ignore";
       gl = "glab";
+      weather = "xh wttr.in/Truro format==j1 | jq '.current_condition.[0].FeelsLikeC'";
 
       # mulesoft
       mule-redeploy =
