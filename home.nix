@@ -2,12 +2,20 @@
 {
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
+    # util
+    sd
+    xh
+    # git
     glab
+    # javascript
     nodejs
     yarn
-    sd
+    # rust
+    cargo
+    rustc
+    gcc
+    # java
     maven
-    xh
   ];
 
   home.sessionVariables = {

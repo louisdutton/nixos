@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.nixvim.plugins = {
     lsp-lines = {
@@ -15,6 +16,11 @@
         jsonls.enable = true;
         yamlls.enable = true;
         nil-ls.enable = true;
+        rust-analyzer = {
+          enable = true;
+          rustcPackage = pkgs.rustc;
+          cargoPackage = pkgs.cargo;
+        };
         nixd = {
           enable = true;
           # options = {
