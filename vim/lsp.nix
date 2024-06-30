@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   programs.nixvim.plugins = {
-    lsp-lines = {
+    lspkind = {
       enable = true;
-      currentLine = true;
+      cmp.enable = true;
     };
 
     lsp = {
@@ -23,10 +23,14 @@
         };
         nixd = {
           enable = true;
-          # options = {
-          #   nixos.expr =
-          #     (builtins.getFlake "/home/louis/.config/nixos").nixosConfigurations.${user.hostName}.options;
-          # };
+          settings = {
+            options = {
+              # nixos.expr = "(builtins.getFlake ${user.flake}).nixosConfigurations.${user.hostName}.options";
+              home-manager.expr = "(builtins.getFlake ${user.flake}).homeConfigurations.${user.name}.options";
+              wsl.expr = "(builtins.getFlake ${user.flake}).debug.options";
+              # nixvim.expr = "(builtins.getFlake ${user.flake}).debug.options";
+            };
+          };
         };
       };
     };
