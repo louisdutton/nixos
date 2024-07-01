@@ -179,9 +179,7 @@
       rebuild = "nh os switch";
       c = "clear";
       e = "nvim";
-      se = "sudo nvim";
       g = "lazygit";
-      sg = "sudo lazygit";
       cat = "bat";
       sso = "aws sso login --sso-session travelchapter";
       tree = "ls --tree --git-ignore";
