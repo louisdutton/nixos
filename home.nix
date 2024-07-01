@@ -181,6 +181,7 @@
       e = "nvim";
       g = "lazygit";
       cat = "bat";
+      top = "btop";
       sso = "aws sso login --sso-session travelchapter";
       tree = "ls --tree --git-ignore";
       gl = "glab";
