@@ -178,7 +178,7 @@
     shellAliases = {
       rebuild = "nh os switch";
       c = "clear";
-      e = "nvim";
+      e = "$EDITOR";
       g = "lazygit";
       cat = "bat";
       top = "btop";
