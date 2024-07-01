@@ -30,7 +30,6 @@
       noice = {
         enable = true;
         presets = {
-          command_palette = true;
           lsp_doc_border = true;
         };
       };
