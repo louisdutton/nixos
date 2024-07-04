@@ -15,6 +15,7 @@
         java-language-server.enable = true;
         jsonls.enable = true;
         yamlls.enable = true;
+        taplo.enable = true;
         nil-ls.enable = true;
         rust-analyzer = {
           enable = true;
