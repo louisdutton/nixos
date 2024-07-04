@@ -177,6 +177,7 @@
 
     shellAliases = {
       rebuild = "nh os switch";
+      d = "nix develop --command zsh";
       c = "clear";
       e = "$EDITOR";
       g = "lazygit";
