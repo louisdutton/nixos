@@ -1,13 +1,9 @@
 let
-  gmap = k: a: {
-    key = k;
-    action = a;
+  bind = key: action: {
+    inherit key action;
+    options.silent = true;
   };
-  nmap = k: a: {
-    key = k;
-    action = a;
-    mode = "n";
-  };
+  nmap = key: action: bind key action // { mode = "n"; };
 in
 {
   programs.nixvim = {
@@ -15,13 +11,17 @@ in
 
     keymaps = [
       # quick commands
-      (gmap ";" ":")
+      (bind ";" ":")
 
       # navigation
-      (gmap "H" "^")
-      (gmap "L" "$")
-      (gmap "K" "gg")
-      (gmap "J" "G")
+      (bind "H" "^")
+      (bind "L" "$")
+      (bind "K" "gg")
+      (bind "J" "G")
+
+      # surround
+      (nmap "s" "ys")
+      (nmap "S" "yS")
 
       # delete and change
       (nmap "dH" "d^")

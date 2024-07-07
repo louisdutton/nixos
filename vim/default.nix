@@ -26,6 +26,7 @@
       treesitter.enable = true;
       treesitter-textobjects.enable = true;
       oil.enable = true;
+      surround.enable = true;
 
       noice = {
         enable = true;
@@ -40,16 +41,6 @@
           pairs = { };
           comment = { };
           ai = { };
-          surround = {
-            mappings = {
-              add = "s";
-              delete = "ds";
-              replace = "cs";
-              find = false;
-              find_left = false;
-              highlight = "vs";
-            };
-          };
         };
       };
 
