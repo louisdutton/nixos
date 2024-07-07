@@ -19,7 +19,10 @@
 
         nil-ls = {
           enable = true;
-          settings.nix.flake.autoEvalInputs = true;
+          settings.nix = {
+            flake.autoEvalInputs = false; # runs out of memory
+            maxMemoryMB = null;
+          };
         };
 
         rust-analyzer = {
