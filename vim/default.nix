@@ -58,7 +58,6 @@
         enable = true;
         modules = {
           pairs = { };
-          comment = { };
           ai = { };
         };
       };
