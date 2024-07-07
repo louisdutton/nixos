@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./keymaps.nix
@@ -21,12 +21,31 @@
       };
     };
 
+    extraPlugins = with pkgs.vimPlugins; [ nvim-surround ];
+    extraConfigLua = # lua
+      ''
+        require('nvim-surround').setup({
+        	keymaps = {
+        		insert = "<C-g>s",
+        		insert_line = "<C-g>S",
+        		normal = "s",
+        		normal_cur = "ss",
+        		normal_line = "S",
+        		normal_cur_line = "SS",
+        		visual = "s",
+        		visual_line = "S",
+        		delete = "ds",
+        		change = "cs",
+        		change_line = "cS",
+        	}
+        })
+      '';
+
     plugins = {
       lualine.enable = true;
       treesitter.enable = true;
       treesitter-textobjects.enable = true;
       oil.enable = true;
-      surround.enable = true;
 
       noice = {
         enable = true;
