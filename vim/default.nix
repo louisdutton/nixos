@@ -35,6 +35,7 @@
       };
 
       mini = {
+        enable = true;
         modules = {
           pairs = { };
           comment = { };
