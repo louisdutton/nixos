@@ -52,7 +52,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${user.name} = import ./home.nix;
+              home-manager.users.${user.name} = import ./home;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
                 inherit user;
