@@ -6,6 +6,7 @@
     ./aws.nix
     ./javascript.nix
     ./rust.nix
+    ./go.nix
     ./java.nix
   ];
 
@@ -26,4 +27,5 @@
   javascript.enable = true;
   rust.enable = true;
   java.enable = true;
+  go.enable = true;
 }
