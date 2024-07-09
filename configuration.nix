@@ -8,7 +8,10 @@
   networking.hostName = user.hostName;
   users = {
     defaultUserShell = pkgs.zsh;
-    users.${user.name}.isNormalUser = true;
+    users.${user.name} = {
+      isNormalUser = true;
+      extraGroups = [ "docker" ];
+    };
   };
 
   programs.zsh.enable = true;
@@ -17,4 +20,6 @@
     flake = user.flake;
   };
   environment.systemPackages = with pkgs; [ xclip ];
+
+  virtualisation.docker.enable = true;
 }
