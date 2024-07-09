@@ -16,6 +16,7 @@
         jsonls.enable = true;
         yamlls.enable = true;
         taplo.enable = true;
+        gopls.enable = true;
 
         nil-ls = {
           enable = true;
