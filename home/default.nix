@@ -26,6 +26,6 @@
   # languages
   javascript.enable = true;
   rust.enable = true;
-  java.enable = true;
+  java.enable = false;
   go.enable = true;
 }
