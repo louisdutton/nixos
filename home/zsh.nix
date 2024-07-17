@@ -155,6 +155,12 @@
         	args=("$@")
         	nix shell ''${args[@]/#/nixpkgs#}
         }
+
+        # take: compound command for mkdir and cd
+        function take() {
+        	mkdir -p $1
+        	cd $1
+        }
       '';
     completionInit = # bash
       ''
