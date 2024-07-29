@@ -54,7 +54,7 @@
   programs.fzf =
     let
       fdFile = "fd --type f";
-      fdDir = "fd --type f";
+      fdDir = "fd --type d";
     in
     {
       enable = true;
