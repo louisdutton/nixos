@@ -10,6 +10,7 @@
       enable = true;
       servers = {
         tsserver.enable = true;
+        eslint.enable = true;
         html.enable = true;
         lemminx.enable = true;
         java-language-server.enable = true;
