@@ -98,6 +98,7 @@
       tree = "ls --tree --git-ignore";
       weather = "xh wttr.in/Truro format==j1 | jq '.current_condition.[0].FeelsLikeC'";
       checkout = "git checkout $(git branch --list | fzf)";
+      "-" = "cd -";
 
       # mulesoft
       mule-redeploy =
